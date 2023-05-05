@@ -9,7 +9,7 @@ def value(greeting, desired_greeting="hello"):
         raise ValueError("greeting cannot be an empty string!")
 
     greeting = greeting.strip()
-    if greeting.lower()[0] == "h":
+    if greeting.lower()[0] == desired_greeting[0]:
         if len(greeting) < len(desired_greeting):
             return 20
         else:
