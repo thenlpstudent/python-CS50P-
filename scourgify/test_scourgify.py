@@ -31,3 +31,19 @@ def test_read_csv_file_not_found():
     err = create_error("CSV file invalid.csv was not found!")
 
     assert read_csv(filename) == err
+
+
+def test_sort_list():
+    input = create_result([["Harry", "Potter", "Grif"],
+     ["Abbott", "Loft", "Sly"],
+     ["James", "Potter", "Grif"],
+     ["Snape", "Severus", "Sly"]])
+
+    expected_output = create_result(
+        [["Abbott", "Loft", "Sly"],
+        ["Harry", "Potter", "Grif"],
+        ["James", "Potter", "Grif"],
+        ["Snape", "Severus", "Sly"]]
+    )
+
+    assert sort_list(input) == expected_output

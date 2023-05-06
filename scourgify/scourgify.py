@@ -15,6 +15,7 @@ def main(args):
     file_name = pipe(arguments, parse_args)
     file_name = pipe(file_name, check_file)
     transformed_data = pipe(file_name, read_csv)
+    transformed_data = pipe(transformed_data, sort_list)
     pipe(transformed_data, write_csv)
     print("Done!")
 
@@ -68,6 +69,17 @@ def transform_row(row: ErrorType):
     name, house = row.result
     lastname, firstname = name.split(",")
     return create_result([firstname.strip(), lastname.strip(), house])
+
+
+def sort_key(row):
+    return f"{row[0]} {row[1]}"
+
+
+def sort_list(rows: ErrorType, key_func=sort_key):
+    new_rows = []
+    for row in sorted(rows.result, key=sort_key):
+        new_rows.append(row)
+    return create_result(new_rows)
 
 
 if __name__ == "__main__":
