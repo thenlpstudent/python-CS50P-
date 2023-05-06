@@ -1,3 +1,4 @@
+# a program that fetches the latest bitcoin price, and calculates price based on qty.
 import requests
 import sys
 
